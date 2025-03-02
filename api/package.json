@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "module": "server.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot server.js",
+    "start": "bun run server.js",
+    "db:generate": "bunx drizzle-kit generate --config=./drizzle.config.js",
+    "db:migrate": "bun ./db/migrate.js",
+    "db:studio": "bunx drizzle-kit studio  --config=./drizzle.config.js",
+    "db:seed": "bun ./db/seed.js",
+    "db:clean": "rm local.db && rm -rf drizzle || true",
+    "db:fresh": "bun db:clean && bun db:generate && bun db:migrate && bun db:seed"
+  },
+  "devDependencies": {
+    "@hono/eslint-config": "^1.0.2",
+    "@types/bun": "latest",
+    "eslint": "^9.17.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.2",
+    "dayjs": "^1.11.13",
+    "drizzle-kit": "^0.26.2",
+    "drizzle-orm": "^0.35.3",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.15",
+    "zod": "^3.24.1"
+  }
+}
